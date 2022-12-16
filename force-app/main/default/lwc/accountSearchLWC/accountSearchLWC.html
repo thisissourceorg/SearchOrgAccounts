@@ -1,0 +1,28 @@
+<template>
+    <lightning-card title="Source Org Account Search">
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner> 
+        </template>
+
+        <lightning-layout multiple-rows="true" vertical-align="end">
+            <lightning-layout-item size="4" class="slds-p-around_x-small">
+                <lightning-input type="search" label="Enter Account Name To Search"
+                    value={searchKey} 
+                    onchange={handleSearchKeyChange}> 
+                </lightning-input>
+            </lightning-layout-item >
+
+            <lightning-layout-item size="2" class="slds-p-around_x-small">
+                <lightning-button label="Search" variant="brand" onclick={searchButtonClicked}>
+                </lightning-button>
+            </lightning-layout-item>
+
+            <lightning-layout-item size="12" class="slds-p-around_small">
+            <div class="dataTableStyling slds-scrollable_y">
+                <lightning-datatable show-row-number-column	 hide-checkbox-column key-field="Id" data={accounts} columns ={columns}> 
+                </lightning-datatable>
+            </div>
+            </lightning-layout-item>
+        </lightning-layout>
+    </lightning-card>
+</template>
